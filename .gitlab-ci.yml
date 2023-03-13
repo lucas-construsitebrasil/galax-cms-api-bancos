@@ -1,0 +1,27 @@
+stages:
+  - build
+  - test
+  - deploy
+
+image: dotsunited/git-ftp
+
+cache:
+  paths:
+    - vendor/
+
+test:merge:
+  stage: test
+  script:
+    - echo "TESTING MERGE REQUEST"
+  only:
+    - merge_requests
+
+deploy:app:
+  stage: deploy
+  environment:
+    name: production
+  only:
+    - main
+  script:
+    - echo "DEPLOY"
+    - git-ftp push -u ${FTP_DEPLOY_USER} ${FTP_DEPLOY_HOST} -p ${FTP_DEPLOY_PASSWORD} --verbose --syncroot .

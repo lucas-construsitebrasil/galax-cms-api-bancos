@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1;
 
+use App\Business\V1\Test;
 use App\Facades\Auth\DataBaseFacade;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -24,7 +25,9 @@ class Controller extends BaseController
 
     public function test()
     {
-        dd(DataBaseFacade::getId());
-        return ['bool' => 'true'];
+        $test = new Test();
+        // A Repository precisa ser registrada na classe RepositoryServiceProvider com sua devida interface
+        // Para conectar no banco do cliente deve ser usado a trait IsClientDataBase na model.
+        return $test->test();
     }
 }

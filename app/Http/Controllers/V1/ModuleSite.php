@@ -4,11 +4,11 @@ namespace App\Http\Controllers\V1;
 
 use Illuminate\Http\Client\Request;
 
-class ModulosSite extends Controller
+class ModuleSite extends Controller
 {
     public function index()
     {
-        return $this->business->test();
+        return $this->business->index();
     }
 
     public function show(Request $request)
@@ -16,9 +16,9 @@ class ModulosSite extends Controller
         return $this->business->show($request);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return $this->business->create();
+        return $this->business->create($request);
     }
 
     public function delete(Request $request)

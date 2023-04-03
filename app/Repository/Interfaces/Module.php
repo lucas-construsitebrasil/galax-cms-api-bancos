@@ -4,13 +4,13 @@ namespace App\Repository\Interfaces;
 
 use Illuminate\Database\Eloquent\Collection;
 
-interface ModulosSite
+interface Module
 {
     public function index(): Collection;
 
-    public function show($request): Collection;
+    public function show(int $id): Collection;
     
-    public function create(): Collection;
+    public function create(array $moduleSiteToInsert): Collection;
 
     public function delete($id);
 

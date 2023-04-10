@@ -2,6 +2,7 @@
 
 namespace App\Business\V1;
 
+use App\Http\Requests\V1\ModuleSite as ModuleSiteRequest;
 use App\Business\V1\Business;
 use App\Business\V1\Modulos;
 use Illuminate\Http\Client\Request;
@@ -21,11 +22,11 @@ class ModuleSite
         return $this->repository->show($request);
     }
 
-    public function create(Request $request)
+    public function create(ModuleSiteRequest $request)
     {
         $moduleSiteToInsert = $request->only('id_funcionalidade', 'id_metodo', 'nome_pagina', 'email_pagina');
-        $this->validatePageName($moduleSiteToInsert->nome_pagina);
-        $this->createModule($moduleSiteToInsert->nome_pagina, $moduleSiteToInsert->id_metodo);
+        $this->validatePageName($moduleSiteToInsert['nome_pagina']);
+        $this->createModule($moduleSiteToInsert['nome_pagina'], $moduleSiteToInsert['id_metodo']);
         return $this->repository->create($moduleSiteToInsert);
     }
 
@@ -42,12 +43,12 @@ class ModuleSite
 
     private function validatePageName(string $nomePag)
     {
-        $this->getModulePorNomePlural($nomePag);
+        $this->getModulePorNomePagina($nomePag);
     }
 
-    private function getModulePorNomePlural(string $nomePag) : void
+    private function getModulePorNomePagina(string $nomePag) : void
     {   
-        if ($this->repository->getModulePorNomePlural($nomePag)){
+        if ($this->repository->getModulePorNomePagina($nomePag)){
             throw new ModulosSiteException('Nome de página já existe');
         }
     }

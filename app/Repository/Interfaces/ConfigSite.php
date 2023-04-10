@@ -2,12 +2,10 @@
 
 namespace App\Repository\Interfaces;
 
-use App\Models\V1\Metodos as MetodosModel;
+use App\Models\V1\ConfigSite as ConfigSiteModel;
 use Illuminate\Database\Eloquent\Collection;
 
-interface Metodos
+interface ConfigSite
 {
     public function index(): Collection;
-
-    public function show(int $id): MetodosModel;
 }

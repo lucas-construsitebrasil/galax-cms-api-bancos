@@ -4,9 +4,9 @@ namespace App\Models\V1;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ModuleSite extends Model
+class Metodos extends Model
 {
     use IsClientDataBase;
 
-    protected $table = "modulossite";
+    protected $table = "metodos";
 }

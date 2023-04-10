@@ -23,9 +23,9 @@ class ModuleSite extends BaseRepository implements InterfacesModuleSite
         return $this->model::all();
     }
 
-    private function getModulePorNomePlural(string $nomePag)
+    public function getModulePorNomePagina(string $nomePag)
     {
-        $this->model::where('nome_plural' , $nomePag)->delete();
+        $this->model::where('nome_pagina_modulosite' , $nomePag)->get();
     }
 
     public function delete($id)

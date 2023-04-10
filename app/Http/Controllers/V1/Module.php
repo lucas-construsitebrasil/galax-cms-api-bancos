@@ -8,7 +8,7 @@ class Module extends Controller
 {
     public function index()
     {
-        return $this->business->test();
+        return $this->business->index();
     }
 
     public function show(Request $request)
